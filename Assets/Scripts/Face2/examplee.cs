@@ -16,7 +16,7 @@ public class examplee : MonoBehaviour
             bool randomBool = boolList[Random.Range(0, boolList.Count)];
 
             // èoóÕ
-            Debug.Log("Number: " + randomNumber + "boolean: " + randomBool);
+            Debug.Log("Number: " + randomNumber + "  boolean: " + randomBool);
             managerCube.recieve(randomNumber, randomBool);
         }
     }

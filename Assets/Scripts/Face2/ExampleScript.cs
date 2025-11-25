@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class examplee : MonoBehaviour
+public class ExampleScript : MonoBehaviour
 {
-    public ManagerCube managerCube;
+    public ManageCube2 managerCube;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -17,7 +17,7 @@ public class examplee : MonoBehaviour
 
             // èoóÕ
             Debug.Log("Number: " + randomNumber + "  boolean: " + randomBool);
-            managerCube.recieve(randomNumber, randomBool);
+            managerCube.receive(randomNumber, randomBool);
         }
     }
 }

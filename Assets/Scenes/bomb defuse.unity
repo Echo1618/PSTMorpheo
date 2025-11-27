@@ -315,12 +315,6 @@ PrefabInstance:
       addedObject: {fileID: 861256128}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
---- !u!1 &150270909 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 773853689519989575, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
-    type: 3}
-  m_PrefabInstance: {fileID: 150270908}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &167775901
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +385,7 @@ MonoBehaviour:
   MainCamera: {fileID: 1928893616}
   GameManager: {fileID: 1817526568}
   controller: {fileID: 861256127}
-  rotationSpeed: 1
+  rotationSpeed: 500
   isHolding: 0
   isSelected: 0
 --- !u!65 &180382196
@@ -501,7 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55037accc49da84793c8154b71f2833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 150270909}
+  controller: {fileID: 2125142265}
   isHolding: 0
 --- !u!1 &196872256
 GameObject:
@@ -4370,7 +4364,7 @@ Transform:
   m_GameObject: {fileID: 1869204678}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2476237, y: 1.3295664, z: 0.20857525}
+  m_LocalPosition: {x: -1.8, y: 1.3295664, z: 0.20857525}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4850,6 +4844,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2125142265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3133494152545806682, guid: 3f7511fbc40ae7a4b89c3298a3de199d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2131318035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2131318035
 PrefabInstance:
   m_ObjectHideFlags: 0

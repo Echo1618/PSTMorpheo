@@ -388,17 +388,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180382194}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5978bf26586068e4b95d30ab3fa5c3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 1928893616}
   GameManager: {fileID: 0}
-  controller: {fileID: 150270909}
+  controller: {fileID: 1573117919}
   rotationSpeed: 1
   isHolding: 0
-  leftGripAction: {fileID: 0}
   isSelected: 0
 --- !u!65 &180382196
 BoxCollider:
@@ -497,16 +496,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180382194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a55037accc49da84793c8154b71f2833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 150270909}
   isHolding: 0
-  leftGripAction: {fileID: -8148491892877670638, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
-  rotationSpeed: 1
 --- !u!1 &196872256
 GameObject:
   m_ObjectHideFlags: 0
@@ -3576,6 +3572,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7eb60de9f4009441abeed26030fd702, type: 3}
+--- !u!1 &1573117919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 491124901914486170, guid: 3f7511fbc40ae7a4b89c3298a3de199d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2131318035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1630819416
 PrefabInstance:
   m_ObjectHideFlags: 0

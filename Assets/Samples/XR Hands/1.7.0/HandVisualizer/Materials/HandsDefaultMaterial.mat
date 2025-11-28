@@ -23,9 +23,8 @@ Material:
   m_Name: HandsDefaultMaterial
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 2100000, guid: d40ee10041e5f2e4ca7532c461d9f352, type: 2}
-  m_ModifiedSerializedProperties: 18
-  m_ValidKeywords:
-  - _EMISSION
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _ALPHABLEND_ON
   m_LightmapFlags: 0
@@ -42,7 +41,6 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats: []
-    m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

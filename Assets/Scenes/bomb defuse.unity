@@ -291,6 +291,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Hand Tracking
       objectReference: {fileID: 0}
+    - target: {fileID: 4985677829560647913, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5876909491052011584, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -393,6 +398,7 @@ MonoBehaviour:
   controller: {fileID: 150270909}
   rotationSpeed: 1
   isHolding: 0
+  leftGripAction: {fileID: 0}
   isSelected: 0
 --- !u!65 &180382196
 BoxCollider:
@@ -498,6 +504,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 150270909}
   isHolding: 0
+  leftGripAction: {fileID: -8148491892877670638, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  rotationSpeed: 1
 --- !u!1 &196872256
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,14 +766,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319669451}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.9396926, z: 0, w: 0.34202018}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.3514, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 815096573}
   m_Father: {fileID: 1869204679}
-  m_LocalEulerAnglesHint: {x: 0, y: -140, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &514508541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 141466980049140221, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,

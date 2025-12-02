@@ -1251,6 +1251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cube: {fileID: 1547132684}
+  exampleScript: {fileID: 745869344}
   purpos: {fileID: 745869342}
 --- !u!1 &1855131539
 GameObject:

@@ -1,10 +1,10 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-public class No2 : MonoBehaviour
+public class ManageCube2 : MonoBehaviour
 {
     public Transform cube;
-    //public ExampleScript exampleScript;
+    public ExampleScript exampleScript;
     public GameObject purpos;
 
     Dictionary<int, Vector3> faceDirections = new Dictionary<int, Vector3>()
@@ -21,7 +21,7 @@ public class No2 : MonoBehaviour
         {   
             Transform purposObject = purpos.transform;
 
-            Debug.Log("Æ’^Â[Æ’QÆ’bÆ’gâ€“ÃŠ = " + randomNumber);
+            Debug.Log("ƒ^[ƒQƒbƒg–Ê = " + randomNumber);
 
             StartCoroutine(movingAndStart(randomNumber, purposObject));
             //target.SendMessage("OnCommandReceived");
@@ -30,22 +30,23 @@ public class No2 : MonoBehaviour
 
     private IEnumerator movingAndStart(int randomNumber, Transform purposObject)
     {
-        // å›è»¢ã•ã›ã‚‹å¯¾è±¡
+        //  ‰ñ“]‚³‚¹‚é‘ÎÛ
         Transform Cube = this.transform;
 
-        // â‘  ç¾åœ¨ã®ä½ç½®ãƒ»å›è»¢ã‚’è¨˜éŒ²
+        // ‡@ Œ»İ‚ÌˆÊ’uE‰ñ“]‚ğ‹L˜^
         Vector3 currentPos = Cube.position;
+
         Quaternion currentRot = Cube.rotation;
 
-        // CubeãŒå‘ããŸã„æ–¹å‘ã‚’æ•°å­—ã‚’ã‚‚ã¨ã«æ±ºã‚ã‚‹
+        // Cube‚ªŒü‚«‚½‚¢•ûŒü‚ğ”š‚ğ‚à‚Æ‚ÉŒˆ‚ß‚é
         Vector3 desiredDirection = faceDirections[randomNumber];
         desiredDirection.Normalize();
-        //Debug.Log("å‘ããŸã„æ–¹å‘â†’" + desiredDirection);
+        //Debug.Log("Œü‚«‚½‚¢•ûŒü¨" + desiredDirection);
 
-        // ãƒ­ãƒ¼ã‚«ãƒ«ã®Z+ã‚’åŸºæº–ã«æŒ‡å®šã®æ–¹å‘ã¸å‘ãã‚ˆã†æŒ‡ç¤º
+        // ƒ[ƒJƒ‹‚ÌZ+‚ğŠî€‚Éw’è‚Ì•ûŒü‚ÖŒü‚­‚æ‚¤w¦
         Quaternion purRot = Quaternion.LookRotation(desiredDirection, Vector3.up);
 
-        // ç›®æ¨™ä½ç½®
+        //–Ú•WˆÊ’u
         Vector3 purPos = purpos.transform.position + purpos.transform.forward * 1.0f;
 
 

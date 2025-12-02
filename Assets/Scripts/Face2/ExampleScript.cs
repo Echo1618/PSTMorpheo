@@ -1,9 +1,9 @@
-    using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class ExampleScript : MonoBehaviour
 {
-    public No2 managerCube;
+    public ManageCube2 managerCube;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

@@ -186,12 +186,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &86562906 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 491124901914486170, guid: 3f7511fbc40ae7a4b89c3298a3de199d,
-    type: 3}
-  m_PrefabInstance: {fileID: 2131318035}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &105111156
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,13 +827,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 278119821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5978bf26586068e4b95d30ab3fa5c3bf, type: 3}
+  m_Script: {fileID: 11500000, guid: db0aeb0534369534bb3b9430a2c5c14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 1928893616}
   cube: {fileID: 278119823}
   purpos: {fileID: 2052775506}
-  controller: {fileID: 86562906}
+  controller: {fileID: 1595130591}
   rotationSpeed: 1
   isHolding: 0
   isSelected: 0
@@ -4359,6 +4353,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7eb60de9f4009441abeed26030fd702, type: 3}
+--- !u!1 &1595130591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9019872111205603751, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
+    type: 3}
+  m_PrefabInstance: {fileID: 150270908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1630819416
 PrefabInstance:
   m_ObjectHideFlags: 0

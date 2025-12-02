@@ -6,7 +6,9 @@ using static UnityEditor.Progress;
 public class CubeManager : MonoBehaviour
 {
     public Camera MainCamera;
-    public GameManager GameManager;
+    //public GameManager GameManager;
+    public Transform cube;
+    public GameObject purpos;
 
     // Telekinesis variables
     public GameObject controller;
@@ -16,6 +18,14 @@ public class CubeManager : MonoBehaviour
 
     //Selection variables
     public bool isSelected = false;
+
+    Dictionary<int, Vector3> faceDirections = new Dictionary<int, Vector3>()
+    {
+        { 0, Vector3.right },
+        { 1, Vector3.forward },
+        { 2, Vector3.left },
+        { 3, Vector3.back }
+    };
 
     // Start is called before the first frame update
     void Start()
@@ -47,52 +57,55 @@ public class CubeManager : MonoBehaviour
         DetectFrontFace();
     }
 
-    public void onClicked(string faceTag)
+    public void receive(int randomNumber, bool randombool)
     {
-        StartCoroutine(Animations(faceTag));
-        //Debug.Log("CubeManager:" + faceTag);
-        GameManager.StartGame(faceTag);
+        if (randombool == true)
+        {
+            Transform purposObject = purpos.transform;
+
+            Debug.Log("recieved number = " + randomNumber);
+
+            StartCoroutine(movingAndStart(randomNumber, purposObject));
+            //target.SendMessage("OnCommandReceived");
+        }
     }
 
-     IEnumerator Animations(string faceTag)
+    private IEnumerator movingAndStart(int randomNumber, Transform purposObject)
     {
-        Transform cube = this.transform;
-        Transform cam = MainCamera.transform;
+        // 回転させる対象
+        Transform Cube = this.transform;
 
-        Vector3 startPos = cube.position;
-        Quaternion Rot =cube.rotation;
+        // ① 現在の位置・回転を記録
+        Vector3 currentPos = Cube.position;
+        Quaternion currentRot = Cube.rotation;
 
-        Vector3 faceDirect = GetFaceNormal(faceTag);
-        Quaternion targetRot = Quaternion.FromToRotation(faceDirect, Vector3.up) * cube.rotation;
-        Vector3 targetPos = cam.position + cam.forward * 1.0f + Vector3.down * 0.6f; // �J�����O
+        // Cubeが向きたい方向を数字をもとに決める
+        Vector3 desiredDirection = faceDirections[randomNumber];
+        desiredDirection.Normalize();
+        //Debug.Log("向きたい方向→" + desiredDirection);
+
+        // ローカルのZ+を基準に指定の方向へ向くよう指示
+        Quaternion purRot = Quaternion.LookRotation(desiredDirection, Vector3.up);
+
+        // 目標位置
+        Vector3 purPos = purpos.transform.position + purpos.transform.forward * 1.0f;
+
 
         float duration = 1.0f;
         float t = 0;
+
         while (t < 1)
         {
-            t += Time.deltaTime / duration; //calculation
-            float smooth = Mathf.SmoothStep(0, 1, t); //smooth
-            cube.position = Vector3.Lerp(startPos, targetPos, smooth); //position
-            cube.rotation = Quaternion.Slerp(Rot, targetRot, smooth); // rotation
+            t += Time.deltaTime / duration;
+            float smooth = Mathf.SmoothStep(0, 1, t);
+
+            Cube.position = Vector3.Lerp(currentPos, purPos, smooth);
+            Cube.rotation = Quaternion.Slerp(currentRot, purRot, smooth);
             yield return null;
         }
     }
 
-    Vector3 GetFaceNormal(string faceTag)
-    {
-        switch (faceTag)
-        {
-            case "up": return transform.up;
-            case "down": return -transform.up;
-            case "forward": return transform.forward;
-            case "back": return -transform.forward;
-            case "left": return -transform.right;
-            case "right": return transform.right;
-            default: return transform.forward;
-        }
-    }
-    
-        public void Holding()
+    public void Holding()
     {
         Debug.Log("Holding");
         isHolding = true;
@@ -106,15 +119,15 @@ public class CubeManager : MonoBehaviour
 
         Vector3[] faceDirections = new Vector3[]
         {
-            transform.forward,   // front
-            -transform.forward,  // back
-            transform.up,        // up
-            -transform.up,       // down
-            transform.right,     // right
-            -transform.right     // left
+         transform.forward,   // front
+         -transform.forward,  // back
+         transform.up,        // up
+         -transform.up,       // down
+         transform.right,     // right
+         -transform.right     // left
         };
 
-        string[] faceNames = { "Front", "Back", "Top", "Bottom", "Right", "Left" };
+        string[] faceNames = { "1", "3", "Top", "Bottom", "2", "0" };
 
         float bestDot = -1f;
         int bestFaceIndex = 0;
@@ -132,6 +145,7 @@ public class CubeManager : MonoBehaviour
         // Debug
         Debug.Log("Face visible : " + faceNames[bestFaceIndex]);
     }
+
 
     public void NotHolding()
     {

@@ -315,6 +315,12 @@ PrefabInstance:
       addedObject: {fileID: 861256128}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
+--- !u!1 &150270909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9019872111205603751, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
+    type: 3}
+  m_PrefabInstance: {fileID: 150270908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &167775901
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 1928893616}
   GameManager: {fileID: 1817526568}
-  controller: {fileID: 861256127}
+  controller: {fileID: 150270909}
   rotationSpeed: 500
   isHolding: 0
   isSelected: 0

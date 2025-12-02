@@ -15,7 +15,7 @@ public class test : MonoBehaviour
 
     //Selection variables
     public bool isSelected = false;
-
+        
     // animation 
     public Transform cube;
     public GameObject purpos;

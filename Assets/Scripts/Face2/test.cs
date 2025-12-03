@@ -1,7 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using static UnityEditor.Progress;
+using System.Runtime.InteropServices;
 public class test : MonoBehaviour
 {
     public Camera MainCamera;
@@ -22,17 +23,25 @@ public class test : MonoBehaviour
 
     Dictionary<int, Vector3> faceDirections = new Dictionary<int, Vector3>()
     {
-        { 0, Vector3.right },
-        { 1, Vector3.forward },
-        { 2, Vector3.left },
-        { 3, Vector3.back }
+        { 0, -Vector3.right },  // left
+        { 1,  Vector3.forward },// front
+        { 2,  Vector3.right },  // right
+        { 3, -Vector3.forward } // back
     };
+    //Dictionary<int, Vector3> faceDirections = new Dictionary<int, Vector3>()
+    //{
+    //    { 0, Vector3.back },     // Left â†’ Z-
+    //    { 1, Vector3.right },     // Back â†’ X+
+    //    { 2, Vector3.forward },  // Right â†’ Z+
+    //    { 3, -Vector3.right },   // Front â†’ X-ï¼ˆã“ã‚ŒãŒæ­£é¢ï¼‰
+    //};
+
 
     void Update()
     {
         if (isHolding)
         {
-            // Calcul du delta de rotation entre la frame actuelle et la précédente
+            // Calcul du delta de rotation entre la frame actuelle et la prÃ©cÃ©dente
             Quaternion deltaRotation = controller.transform.rotation * Quaternion.Inverse(lastControllerRotation);
 
             // Convertir le delta en angles d'Euler
@@ -44,46 +53,44 @@ public class test : MonoBehaviour
             // Appliquer la rotation autour de l'axe Y local
             transform.Rotate(Vector3.up, deltaYaw, Space.World);
 
-            // Mettre à jour la dernière rotation connue du contrôleur
+            // Mettre Ã  jour la derniÃ¨re rotation connue du contrÃ´leur
             lastControllerRotation = controller.transform.rotation;
         }
 
-        DetectFrontFace();
-    }
+        int faceNum = DetectFrontFace();
 
-    public void receive(int randomNumber, bool randombool)
-    {
-        if (randombool == true)
+        if (isSelected)
         {
+            Debug.Log("faceNum =" + faceNum);
             Transform purposObject = purpos.transform;
 
-            Debug.Log("ƒ^[ƒQƒbƒg–Ê = " + randomNumber);
-
-            StartCoroutine(movingAndStart(randomNumber, purposObject));
-            //target.SendMessage("OnCommandReceived");
+            StartCoroutine(movingAndStart(faceNum, purposObject));
+            isSelected = false; 
         }
     }
 
-    private IEnumerator movingAndStart(int randomNumber, Transform purposObject)
+
+private IEnumerator movingAndStart(int randomNumber, Transform purposObject)
     {
-        //  ‰ñ“]‚³‚¹‚é‘ÎÛ
+        //  â€°Ã±â€œ]â€šÂ³â€šÂ¹â€šÃ©â€˜ÃÂÃ›
         Transform Cube = this.transform;
 
-        // ‡@ Œ»İ‚ÌˆÊ’uE‰ñ“]‚ğ‹L˜^
+        // â€¡@ Å’Â»ÂÃâ€šÃŒË†ÃŠâ€™uÂEâ€°Ã±â€œ]â€šÃ°â€¹LËœ^
         Vector3 currentPos = Cube.position;
 
         Quaternion currentRot = Cube.rotation;
 
-        // Cube‚ªŒü‚«‚½‚¢•ûŒü‚ğ”š‚ğ‚à‚Æ‚ÉŒˆ‚ß‚é
+        // Cubeâ€šÂªÅ’Ã¼â€šÂ«â€šÂ½â€šÂ¢â€¢Ã»Å’Ã¼â€šÃ°Ââ€Å½Å¡â€šÃ°â€šÃ â€šÃ†â€šÃ‰Å’Ë†â€šÃŸâ€šÃ©
+        Debug.Log("randomNumber =" + randomNumber);
         Vector3 desiredDirection = faceDirections[randomNumber];
         desiredDirection.Normalize();
-        //Debug.Log("Œü‚«‚½‚¢•ûŒü¨" + desiredDirection);
+        //Debug.Log("Å’Ã¼â€šÂ«â€šÂ½â€šÂ¢â€¢Ã»Å’Ã¼ÂÂ¨" + desiredDirection);
 
-        // ƒ[ƒJƒ‹‚ÌZ+‚ğŠî€‚Éw’è‚Ì•ûŒü‚ÖŒü‚­‚æ‚¤w¦
-        Quaternion purRot = Quaternion.LookRotation(desiredDirection, Vector3.up);
+        // Æ’ÂÂ[Æ’JÆ’â€¹â€šÃŒZ+â€šÃ°Å Ã®Ââ‚¬â€šÃ‰Å½wâ€™Ã¨â€šÃŒâ€¢Ã»Å’Ã¼â€šÃ–Å’Ã¼â€šÂ­â€šÃ¦â€šÂ¤Å½wÅ½Â¦
+        Quaternion purRot = Quaternion.LookRotation(desiredDirection, Vector3.up * 1.0f);
 
-        //–Ú•WˆÊ’u
-        Vector3 purPos = purpos.transform.position + purpos.transform.forward * 1.0f;
+        //â€“Ãšâ€¢WË†ÃŠâ€™u
+        Vector3 purPos = purpos.transform.position + purpos.transform.forward ;
 
 
         float duration = 1.0f;
@@ -104,10 +111,10 @@ public class test : MonoBehaviour
     {
         Debug.Log("Holding");
         isHolding = true;
-        lastControllerRotation = controller.transform.rotation; // On garde la rotation de départ
+        lastControllerRotation = controller.transform.rotation; // On garde la rotation de dÃ©part
     }
 
-    private void DetectFrontFace()
+    private int DetectFrontFace()
     {
 
         Vector3 toCamera = (Camera.main.transform.position - transform.position).normalized;
@@ -137,8 +144,9 @@ public class test : MonoBehaviour
             }
         }
 
-        // Debug
-        Debug.Log("Face visible : " + faceNames[bestFaceIndex]);
+        int face = faceNames[bestFaceIndex];
+        Debug.Log("Face visible : " + face);
+        return face;
     }
 
     public void NotHolding()
@@ -147,10 +155,12 @@ public class test : MonoBehaviour
         isHolding = false;
     }
 
-    public void Select()
-    {
-        Debug.Log("choose");
+    public void Select() //int faceNum
+    { 
+
+        Debug.Log("choose" );
         isSelected = true;
+
     }
     public void Deselect()
     {

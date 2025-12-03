@@ -114,15 +114,15 @@ public class test : MonoBehaviour
 
         Vector3[] faceDirections = new Vector3[]
         {
+            -transform.right,     // left
             transform.forward,   // front
-            -transform.forward,  // back
-            transform.up,        // up
-            -transform.up,       // down
             transform.right,     // right
-            -transform.right     // left
+            -transform.forward  // back
+            //transform.up,        // up
+            //-transform.up,       // down
         };
 
-        string[] faceNames = { "Front", "Back", "Top", "Bottom", "Right", "Left" };
+        int[] faceNames = { 0, 1, 2, 3 };
 
         float bestDot = -1f;
         int bestFaceIndex = 0;

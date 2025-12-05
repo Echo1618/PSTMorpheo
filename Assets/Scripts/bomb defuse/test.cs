@@ -16,26 +16,8 @@ public class test : MonoBehaviour
 
     //Selection variables
     public bool isSelected = false;
-        
-    // animation 
-    public Transform cube;
-    public GameObject purpos;
 
-    Dictionary<int, Vector3> faceDirections = new Dictionary<int, Vector3>()
-    {
-        { 0, -Vector3.right },  // left
-        { 1,  Vector3.forward },// front
-        { 2,  Vector3.right },  // right
-        { 3, -Vector3.forward } // back
-    };
-    //Dictionary<int, Vector3> faceDirections = new Dictionary<int, Vector3>()
-    //{
-    //    { 0, Vector3.back },     // Left → Z-
-    //    { 1, Vector3.right },     // Back → X+
-    //    { 2, Vector3.forward },  // Right → Z+
-    //    { 3, -Vector3.right },   // Front → X-（これが正面）
-    //};
-
+    public MinigameManager minigame;
 
     void Update()
     {
@@ -61,49 +43,9 @@ public class test : MonoBehaviour
 
         if (isSelected)
         {
-            Debug.Log("faceNum =" + faceNum);
-            Transform purposObject = purpos.transform;
-
-            StartCoroutine(movingAndStart(faceNum, purposObject));
-            isSelected = false; 
-        }
-    }
-
-
-private IEnumerator movingAndStart(int randomNumber, Transform purposObject)
-    {
-        //  ‰ñ“]‚³‚¹‚é‘ÎÛ
-        Transform Cube = this.transform;
-
-        // ‡@ Œ»Ý‚ÌˆÊ’uE‰ñ“]‚ð‹L˜^
-        Vector3 currentPos = Cube.position;
-
-        Quaternion currentRot = Cube.rotation;
-
-        // Cube‚ªŒü‚«‚½‚¢•ûŒü‚ð”Žš‚ð‚à‚Æ‚ÉŒˆ‚ß‚é
-        Debug.Log("randomNumber =" + randomNumber);
-        Vector3 desiredDirection = faceDirections[randomNumber];
-        desiredDirection.Normalize();
-        //Debug.Log("Œü‚«‚½‚¢•ûŒü¨" + desiredDirection);
-
-        // ƒ[ƒJƒ‹‚ÌZ+‚ðŠî€‚ÉŽw’è‚Ì•ûŒü‚ÖŒü‚­‚æ‚¤ŽwŽ¦
-        Quaternion purRot = Quaternion.LookRotation(desiredDirection, Vector3.up * 1.0f);
-
-        //–Ú•WˆÊ’u
-        Vector3 purPos = purpos.transform.position + purpos.transform.forward ;
-
-
-        float duration = 1.0f;
-        float t = 0;
-
-        while (t < 1)
-        {
-            t += Time.deltaTime / duration;
-            float smooth = Mathf.SmoothStep(0, 1, t);
-
-            Cube.position = Vector3.Lerp(currentPos, purPos, smooth);
-            Cube.rotation = Quaternion.Slerp(currentRot, purRot, smooth);
-            yield return null;
+            Debug.Log("test faceNum =" + faceNum);
+            minigame.StartMoving(faceNum);
+            isSelected = false;
         }
     }
 
@@ -145,7 +87,7 @@ private IEnumerator movingAndStart(int randomNumber, Transform purposObject)
         }
 
         int face = faceNames[bestFaceIndex];
-        Debug.Log("Face visible : " + face);
+        Debug.Log("Now Face visible : " + face);
         return face;
     }
 
@@ -155,10 +97,10 @@ private IEnumerator movingAndStart(int randomNumber, Transform purposObject)
         isHolding = false;
     }
 
-    public void Select() //int faceNum
-    { 
+    public void Select()
+    {
 
-        Debug.Log("choose" );
+        Debug.Log("choose");
         isSelected = true;
 
     }

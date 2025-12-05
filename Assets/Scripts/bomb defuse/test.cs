@@ -7,6 +7,7 @@ public class test : MonoBehaviour
 {
     public Camera MainCamera;
     public GameManager GameManager;
+    public MinigameManager minigame;
 
     // Telekinesis variables
     public GameObject controller;
@@ -17,11 +18,12 @@ public class test : MonoBehaviour
     //Selection variables
     public bool isSelected = false;
 
-    public MinigameManager minigame;
+    // Rotation monitoring flag
+    public bool canRotate = true;
 
     void Update()
     {
-        if (isHolding)
+        if (isHolding && canRotate)
         {
             // Calcul du delta de rotation entre la frame actuelle et la précédente
             Quaternion deltaRotation = controller.transform.rotation * Quaternion.Inverse(lastControllerRotation);
@@ -54,6 +56,25 @@ public class test : MonoBehaviour
         Debug.Log("Holding");
         isHolding = true;
         lastControllerRotation = controller.transform.rotation; // On garde la rotation de départ
+
+    }
+    public void NotHolding()
+    {
+        Debug.Log("Not Holding");
+        isHolding = false;
+    }
+
+    public void Select()
+    {
+        Debug.Log("choose");
+        isSelected = true;
+        canRotate = false;
+    }
+
+    public void Deselect()
+    {
+        Debug.Log("not choose");
+        isSelected = false;
     }
 
     private int DetectFrontFace()
@@ -91,23 +112,5 @@ public class test : MonoBehaviour
         return face;
     }
 
-    public void NotHolding()
-    {
-        Debug.Log("Not Holding");
-        isHolding = false;
-    }
-
-    public void Select()
-    {
-
-        Debug.Log("choose");
-        isSelected = true;
-
-    }
-    public void Deselect()
-    {
-        Debug.Log("not choose");
-        isSelected = false;
-    }
 
 }

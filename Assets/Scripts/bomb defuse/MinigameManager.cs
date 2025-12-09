@@ -89,18 +89,19 @@ public class MinigameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator AppearFromCube(Transform Mini, float duration = 0.7f) // Face0 no Cube Joumenn no animation
+    public IEnumerator AppearFromCube(Transform Mini)
     {
-        // ---- 初期／最終位置 ----
+        // 初期、最終位置
         Vector3 startPos = Mini.localPosition;
         Vector3 endPos = new Vector3(startPos.x, startPos.y + 0.55f, startPos.z);
         // 上方向に少しだけせり出す
 
-        // ---- スケールを 0 → 1 にする ----
+        //スケールを 0 → 1 にする
         Vector3 startScale = Vector3.zero;
         Vector3 endScale = Vector3.one;
 
         float t = 0f;
+        float duration = 0.7f;
 
         while (t < 1f)
         {

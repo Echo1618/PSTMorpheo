@@ -11,7 +11,7 @@ public class ExperimentBehavious : MonoBehaviour
 
     [Tooltip("LOG FILE")]
     [SerializeField]
-    string path = "";
+    // string path = "";
 
 
     public enum Experiment
@@ -26,7 +26,7 @@ public class ExperimentBehavious : MonoBehaviour
 
 
     [SerializeField]
-    private bool m_next = false;
+    // private bool m_next = false;
 
     [Tooltip("Experiment 1 : REACTION TIME")]
     private float startTime = -1f;
@@ -58,7 +58,7 @@ public class ExperimentBehavious : MonoBehaviour
                 startTime = Time.time + randTime;
                 start = false;
                 hit = false;
-                Debug.Log("Prépare-toi...");
+                Debug.Log("Prï¿½pare-toi...");
             }
       
             timer += dTime;
@@ -66,7 +66,7 @@ public class ExperimentBehavious : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && !hit)
             {
                 float reactionTime = Time.time - startTime;
-                Debug.Log("Temps de réaction : " + reactionTime.ToString("F3") + " secondes");
+                Debug.Log("Temps de rï¿½action : " + reactionTime.ToString("F3") + " secondes");
                 p_arduinoCom.SendSig(0);
                 hit = true;
             }

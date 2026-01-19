@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 222180046}
   - component: {fileID: 222180045}
   m_Layer: 0
-  m_Name: wall (1)
+  m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,7 +747,7 @@ GameObject:
   - component: {fileID: 345024304}
   - component: {fileID: 345024303}
   m_Layer: 0
-  m_Name: celling
+  m_Name: Celling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 613102560}
   - component: {fileID: 613102559}
   m_Layer: 0
-  m_Name: wall (3)
+  m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1780,7 +1780,7 @@ GameObject:
   - component: {fileID: 948815673}
   - component: {fileID: 948815672}
   m_Layer: 0
-  m_Name: floor
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2359,7 +2359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1146684039}
   m_Layer: 0
-  m_Name: room
+  m_Name: Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2438,7 +2438,7 @@ GameObject:
   - component: {fileID: 1195017550}
   - component: {fileID: 1195017549}
   m_Layer: 0
-  m_Name: Socle
+  m_Name: Pad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2555,7 +2555,7 @@ GameObject:
   - component: {fileID: 1360074114}
   - component: {fileID: 1360074113}
   m_Layer: 0
-  m_Name: wall (4)
+  m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

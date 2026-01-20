@@ -12,6 +12,13 @@ TagManager:
   - 3
   - 4
   - 5
+  - down
+  - up
+  - left
+  - back
+  - forword
+  - right
+  - MS_Flag
   layers:
   - Default
   - TransparentFX
